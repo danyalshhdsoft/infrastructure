@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  sb-gateway:
+    container_name: sb-gateway
+    build:
+      context: ./sb-gateway
+      dockerfile: Dockerfile
+    command: npm run start:debug
+    ports:
+      - 3000:3000
+
+  sb-auth:
+    container_name: sb-auth
+    build:
+      context: ./sb-auth
+      dockerfile: Dockerfile
+    command: npm run start:debug
+    network_mode: host
+  
+  sb-billing:
+    container_name: sb-billing
+    build:
+      context: ./sb-billing
+      dockerfile: Dockerfile
+    command: npm run start:debug
+    network_mode: host
